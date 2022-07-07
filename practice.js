@@ -19,8 +19,13 @@ class Bookshelf {
 
 
 
-function loadBooks( /* .. */ ) {
-	// TODO: call fakeAjax( .. );
+function loadBooks(bookshelf) {
+	fakeAjax(BOOK_API, function booksCallback(bookNames){
+		for (let bookName of bookNames) {
+			bookshelf.addFavoriteBook(bookName);
+		}
+		bookshelf.printFavoriteBooks();
+	})
 }
 
 var BOOK_API = "https://some.url/api";
@@ -42,4 +47,4 @@ function fakeAjax(url,cb) {
 }
 
 let firstBookshelf = new Bookshelf();
-console.log(firstBookshelf.printFavoriteBooks());
+loadBooks(firstBookshelf)

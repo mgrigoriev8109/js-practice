@@ -3,22 +3,21 @@ class Bookshelf {
 		this.favoriteBooks = [];
 	}
 
-	// TODO: define methods `addFavoriteBook(..)`
-	// and `printFavoriteBooks()`
-}
-
-function addFavoriteBook(bookName) {
-	if (!bookName.includes("Great")) {
-		favoriteBooks.push(bookName);
+	addFavoriteBook(bookName) {
+		if (!bookName.includes("Great")) {
+			this.favoriteBooks.push(bookName);
+		}
+	}
+	
+	printFavoriteBooks() {
+		console.log(`Favorite Books: ${String(this.favoriteBooks.length)}`);
+		for (let bookName of this.favoriteBooks) {
+			console.log(bookName);
+		}
 	}
 }
 
-function printFavoriteBooks() {
-	console.log(`Favorite Books: ${favoriteBooks.length}`);
-	for (let bookName of favoriteBooks) {
-		console.log(bookName);
-	}
-}
+
 
 function loadBooks( /* .. */ ) {
 	// TODO: call fakeAjax( .. );
@@ -41,3 +40,6 @@ function fakeAjax(url,cb) {
 		]);
 	},500);
 }
+
+let firstBookshelf = new Bookshelf();
+console.log(firstBookshelf.printFavoriteBooks());
